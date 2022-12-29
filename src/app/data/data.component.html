@@ -1,0 +1,31 @@
+<div>
+  <input type="text" placeholder="name" [(ngModel)]="fname" />
+  <input type="text" placeholder="username" [(ngModel)]="username" />
+  <input type="text" placeholder="Email" [(ngModel)]="email" />
+  <input type="text" placeholder="city" [(ngModel)]="city" />
+  <input type="text" placeholder="zip" [(ngModel)]="zip" />
+  <button (click)="addRecord()">Add record</button>
+
+  <br /><br />
+</div>
+<button (click)="showRec()">Show Records</button><br /><br />
+<table>
+  <tr>
+    <th>name</th>
+    <th>Username</th>
+    <th>email</th>
+    <th>address</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let user of userData">
+    <td>{{ user.name }}</td>
+    <td>{{ user.username }}</td>
+    <td>{{ user.email }}</td>
+    <td>{{ user.address.city }} {{ user.address.zipcode }}</td>
+    <td><button (click)="removeItem(user)">Remove</button></td>
+  </tr>
+</table>
+<h2 *ngIf="!userData.length">
+  No Record Found
+  <h2></h2>
+</h2>
